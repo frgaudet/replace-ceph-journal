@@ -8,7 +8,7 @@ disk=sda
 for partition in $partitions
 do
 journal_uuid=$(uuidgen)
-sgdisk --new=$partition:0:+5120M --change-name=$partition:'ceph journal' --partition-guid=$partition:$journal_uuid --typecode=$partition:$journal_uuid --mbrtogpt -- /dev/$disk
+sgdisk --new=$partition:0:+5120M --change-name=$partition:'ceph journal' --partition-guid=$partition:$journal_uuid --typecode=$partition:45b0969e-9b03-4f30-b4c6-b4b80ceff106 --mbrtogpt -- /dev/$disk
 partprobe /dev/$disk
 
 systemctl stop ceph-osd@$num.service
